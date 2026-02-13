@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEAN.FUN | Games for Everyone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=DM+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1 class="logo">LEAN.FUN</h1>
+        <p class="tagline">Lightweight. Fast. Fun for Everyone.</p>
+    </header>
+
+    <main class="game-grid">
+        <div class="game-card game-card--snake">
+            <div class="icon">🐍</div>
+            <h3>Neon Snake</h3>
+            <div class="game-canvas-wrap">
+                <canvas id="snakeGame" width="200" height="200"></canvas>
+            </div>
+            <button id="startBtn" class="card-btn" onclick="startSnake()">Play Now</button>
+        </div>
+
+        <div class="game-card game-card--blocks">
+            <div class="icon">🧱</div>
+            <h3>Block Fall</h3>
+            <div class="game-canvas-wrap">
+                <canvas id="blockGame" width="200" height="200"></canvas>
+            </div>
+            <button id="blockBtn" class="card-btn" onclick="startBlocks()">Play Now</button>
+        </div>
+
+        <div class="game-card game-card--target">
+            <div class="icon">🎯</div>
+            <h3>Target Hit</h3>
+            <div class="game-canvas-wrap">
+                <canvas id="targetGame" width="200" height="200"></canvas>
+            </div>
+            <button id="targetBtn" class="card-btn" onclick="startTarget()">Play Now</button>
+        </div>
+
+        <div class="game-card game-card--typer">
+            <div class="icon">⌨️</div>
+            <h3>Speed Typer</h3>
+            <div id="typeArea" class="game-canvas-wrap game-canvas-wrap--typer">
+                <p id="wordDisplay" class="word-display"></p>
+                <input type="text" id="typeInput" class="type-input" placeholder="Type the word...">
+            </div>
+            <button id="typeBtn" class="card-btn" onclick="startTyping()">Play Now</button>
+        </div>
+
+        <div class="game-card game-card--dodge">
+            <div class="icon">⚽</div>
+            <h3>Dodge Ball</h3>
+            <div class="game-canvas-wrap">
+                <canvas id="dodgeGame" width="200" height="200"></canvas>
+            </div>
+            <button id="dodgeBtn" class="card-btn" onclick="startDodge()">Play Now</button>
+        </div>
+
+        <div class="game-card game-card--memory">
+            <div class="icon">🧠</div>
+            <h3>Memory Tiles</h3>
+            <div id="memoryBoard" class="game-canvas-wrap game-canvas-wrap--memory"></div>
+            <button id="memoryBtn" class="card-btn" onclick="startMemory()">Play Now</button>
+        </div>
+    </main>
+
+    <footer>
+        <button class="surprise-btn" onclick="surpriseMe()">🎲 SURPRISE ME</button>
+        <p>Total Games: 6 | Optimized for Everyone</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

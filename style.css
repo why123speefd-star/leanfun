@@ -1,0 +1,333 @@
+/* LEAN.FUN — Premium arcade styling */
+
+:root {
+    --bg: #0a0a0f;
+    --bg-card: rgba(255, 255, 255, 0.06);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --text: #f0f0f5;
+    --text-muted: #8888aa;
+    /* Neon accents per game */
+    --neon-snake: #ff4757;
+    --neon-blocks: #47a0ff;
+    --neon-target: #47ff75;
+    --neon-typer: #ff6b81;
+    --neon-dodge: #00f5ff;
+    --neon-memory: #a855f7;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    text-align: center;
+}
+
+/* ----- Header: futuristic font + gradient ----- */
+header {
+    padding: 40px 24px 36px;
+    position: relative;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.2rem, 6vw, 3.5rem);
+    letter-spacing: 0.08em;
+    margin: 0;
+    background: linear-gradient(135deg, #00f5ff 0%, #a855f7 50%, #ff4757 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 6s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.tagline {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 8px 0 0;
+    font-weight: 400;
+}
+
+/* ----- Game grid ----- */
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    padding: 0 24px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ----- Glassmorphism + neon cards ----- */
+.game-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 24px;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.35s ease,
+                border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Neon glow per card (border + box-shadow) */
+.game-card--snake {
+    box-shadow: 0 0 0 1px rgba(255, 71, 87, 0.2),
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.game-card--snake:hover {
+    border-color: var(--neon-snake);
+    box-shadow: 0 0 24px rgba(255, 71, 87, 0.4),
+                0 0 48px rgba(255, 71, 87, 0.15),
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.game-card--blocks {
+    box-shadow: 0 0 0 1px rgba(71, 160, 255, 0.2),
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.game-card--blocks:hover {
+    border-color: var(--neon-blocks);
+    box-shadow: 0 0 24px rgba(71, 160, 255, 0.4),
+                0 0 48px rgba(71, 160, 255, 0.15),
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.game-card--target {
+    box-shadow: 0 0 0 1px rgba(71, 255, 117, 0.2),
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.game-card--target:hover {
+    border-color: var(--neon-target);
+    box-shadow: 0 0 24px rgba(71, 255, 117, 0.4),
+                0 0 48px rgba(71, 255, 117, 0.15),
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.game-card--typer {
+    box-shadow: 0 0 0 1px rgba(255, 107, 129, 0.2),
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.game-card--typer:hover {
+    border-color: var(--neon-typer);
+    box-shadow: 0 0 24px rgba(255, 107, 129, 0.4),
+                0 0 48px rgba(255, 107, 129, 0.15),
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.game-card--dodge {
+    box-shadow: 0 0 0 1px rgba(0, 245, 255, 0.2),
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.game-card--dodge:hover {
+    border-color: var(--neon-dodge);
+    box-shadow: 0 0 24px rgba(0, 245, 255, 0.4),
+                0 0 48px rgba(0, 245, 255, 0.15),
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.game-card--memory {
+    box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.2),
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.game-card--memory:hover {
+    border-color: var(--neon-memory);
+    box-shadow: 0 0 24px rgba(168, 85, 247, 0.4),
+                0 0 48px rgba(168, 85, 247, 0.15),
+                0 12px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Hover lift */
+.game-card:hover {
+    transform: translateY(-8px);
+}
+
+.icon {
+    font-size: 2.8rem;
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.game-card h3 {
+    margin: 0 0 16px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* ----- Game canvas wrapper: hidden by default, fade-in when visible ----- */
+.game-canvas-wrap {
+    display: none;
+    margin: 10px auto;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.game-canvas-wrap.is-visible {
+    display: block;
+    animation: canvasFadeIn 0.45s ease forwards;
+}
+
+@keyframes canvasFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.game-canvas-wrap canvas {
+    display: block;
+    margin: 0 auto;
+    background: #000;
+    border-radius: 10px;
+    max-width: 100%;
+    height: auto;
+}
+
+#snakeGame { border: 1px solid var(--neon-snake); }
+#blockGame { border: 1px solid var(--neon-blocks); }
+#targetGame { background: #111; border: 1px solid var(--neon-target); }
+#dodgeGame { background: #111; border: 1px solid var(--neon-dodge); }
+
+.game-canvas-wrap--typer {
+    width: 100%;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.word-display {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--neon-typer);
+    margin: 0 0 12px;
+}
+.type-input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--text);
+    font-size: 1rem;
+    font-family: inherit;
+}
+.type-input::placeholder {
+    color: var(--text-muted);
+}
+.type-input:focus {
+    outline: none;
+    border-color: var(--neon-typer);
+    box-shadow: 0 0 12px rgba(255, 107, 129, 0.3);
+}
+
+.game-canvas-wrap--memory {
+    display: none;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    width: 164px;
+    margin: 10px auto;
+}
+.game-canvas-wrap--memory.is-visible {
+    display: grid;
+    animation: canvasFadeIn 0.45s ease forwards;
+}
+
+/* ----- Buttons ----- */
+.card-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    border: 1px solid var(--glass-border);
+    padding: 12px 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.card-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.02);
+}
+
+.card-btn:active {
+    transform: scale(0.98);
+}
+
+/* Hide button when game is shown */
+.card-btn.is-hidden {
+    display: none;
+}
+
+.surprise-btn {
+    background: linear-gradient(135deg, #ffbc47, #ff9500);
+    color: #000;
+    font-weight: 700;
+    font-family: inherit;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.surprise-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(255, 188, 71, 0.4);
+}
+
+/* ----- Footer ----- */
+footer {
+    padding: 32px 24px 40px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+footer p {
+    margin: 16px 0 0;
+}
+
+@media (max-width: 640px) {
+    .game-grid {
+        grid-template-columns: 1fr;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    header {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
